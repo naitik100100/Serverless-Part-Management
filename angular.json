@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "company-y-ui": {
+    "company-y-ui-a7": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/company-y-ui",
+            "outputPath": "dist/company-y-ui-a7",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,13 +68,13 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "company-y-ui:build",
+            "browserTarget": "company-y-ui-a7:build",
             "hmr": true,
             "hmrWarning": false
           },
           "configurations": {
             "production": {
-              "browserTarget": "company-y-ui:build:production",
+              "browserTarget": "company-y-ui-a7:build:production",
               "hmr": false
             },
             "ci": {
@@ -85,7 +85,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "company-y-ui:build"
+            "browserTarget": "company-y-ui-a7:build"
           }
         },
         "test": {
@@ -117,11 +117,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "company-y-ui:serve"
+            "devServerTarget": "company-y-ui-a7:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "company-y-ui:serve:production"
+              "devServerTarget": "company-y-ui-a7:serve:production"
             }
           }
         },
@@ -134,7 +134,7 @@
       }
     }
   },
-  "defaultProject": "company-y-ui",
+  "defaultProject": "company-y-ui-a7",
   "cli": {
     "analytics": "8a0a2a47-eaac-458c-af3d-095b5887ed03"
   }

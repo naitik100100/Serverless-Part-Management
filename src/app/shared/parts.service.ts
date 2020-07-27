@@ -2,6 +2,7 @@ import { Job } from './job.model';
 import { HttpClient } from '@angular/common/http';
 import { Parts } from './parts.model';
 import { Injectable } from '@angular/core';
+import { observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -19,16 +20,10 @@ export class PartsService {
   getPartsList() {
     return this.http.get<Parts[]>(this.URL + '/parts');
   }
-  getSpecificPart(formData: number) {
-    return this.http.get(this.URL + '/parts/' + formData);
-  }
   editPart(formData: Parts) {
     return this.http.put(this.URL + '/parts', formData);
   }
   getOrder() {
     return this.http.get<Job[]>(this.URL + '/partorders');
-  }
-  getSpecificOrder(jobName: string) {
-    return this.http.get(this.URL + '/partorders/' + jobName);
   }
 }

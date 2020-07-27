@@ -25,18 +25,16 @@ export class AddPartsComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.service.getPartsList().subscribe(data=>{
+    this.service.getPartsList().subscribe((data) => {
       let exists = false;
-      data["Items"].forEach((part: any)=>{
-        if(form.value.partId == part.partId)
-        {
-          this.toastr.error('Cannot add same PartId'); 
+      data['Items'].forEach((part: any) => {
+        if (form.value.partId == part.partId) {
+          this.toastr.error('Cannot add same PartId');
           exists = true;
         }
-      })
+      });
 
-      if(!exists)
-      {
+      if (!exists) {
         this.service.postParts(form.value).subscribe(
           (res) => {
             this.resetFrom(form);
@@ -50,7 +48,6 @@ export class AddPartsComponent implements OnInit {
           }
         );
       }
-    })
-    
+    });
   }
 }

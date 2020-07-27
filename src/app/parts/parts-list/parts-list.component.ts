@@ -24,7 +24,7 @@ export class PartsListComponent implements OnInit {
   ngOnInit(): void {
     this.service.getPartsList().subscribe(
       (response) => {
-        this.parts = response["Items"];
+        this.parts = response['Items'];
       },
       (error) => console.log(error)
     );
@@ -45,20 +45,20 @@ export class PartsListComponent implements OnInit {
       this.toastr.error('PartID is Invalid');
     }
     this.ngOnInit();
-    this.service.getSpecificPart(partId).subscribe(
+    this.service.getPartsList().subscribe(
       (res) => {
-        this.toastr.success('PartId Found');
         this.parts = this.parts.filter((res) => {
           return res.partId == this.partId;
         });
+        if (this.parts.length == 0) {
+          this.toastr.error('PartId not Found');
+        } else {
+          this.toastr.success('PartId Found');
+        }
       },
       (error) => {
         this.toastr.error('Cannot find the part');
       }
     );
-    if (this.partId != 0) {
-    } else if (this.partId == 0) {
-      this.ngOnInit();
-    }
   }
 }

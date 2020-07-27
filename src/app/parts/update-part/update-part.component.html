@@ -13,7 +13,7 @@
       [(ngModel)]="data.partName"
       class="form-control"
       type="text"
-      required
+      readonly
     />
     <div class="validation-error" *ngIf="partName.invalid && partName.touched">This field cannot be empty</div>
   </div>

@@ -17,7 +17,7 @@ export class ViewOrdersComponent implements OnInit {
   ngOnInit(): void {
     this.service.getOrder().subscribe(
       (response) => {
-        this.jobs = response["Items"];
+        this.jobs = response['Items'];
       },
       (error) => console.log(error)
     );
@@ -34,20 +34,16 @@ export class ViewOrdersComponent implements OnInit {
     this.service.getOrder().subscribe(
       (res) => {
         this.jobs = this.jobs.filter((res) => {
-          return res.jobName == this.jobName;
+          return res.jobName.toLowerCase() == this.jobName.toLowerCase();
         });
-        
-        if(this.jobs.length==0)
-        {
+
+        if (this.jobs.length == 0) {
           this.toastr.error('Cannot find the Order');
-        }
-        else
-        {
+        } else {
           this.toastr.success('Order Found');
         }
       },
-      (error) => {
-      }
+      (error) => {}
     );
   }
 }

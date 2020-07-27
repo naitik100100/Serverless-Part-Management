@@ -27,14 +27,21 @@ export class UpdatePartComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(form: NgForm) {
-    this.service.editPart(form.value).subscribe(
-      (res) => {
-        this.toastr.success('Record Updated Sucessfully', 'Part Info Updated');
-        this.dialogRef.close(this.data);
-      },
-      (error) => {
-        this.toastr.error('Record Not Updated', 'Error in connecting database');
-      }
-    );
+    let valid = true;
+    if (form.value.qoh < 0) {
+      this.toastr.error('Quantity cannot be negative');
+      valid = false;
+    }
+    if (valid) {
+      this.service.editPart(form.value).subscribe(
+        (res) => {
+          this.toastr.success('Record Updated Sucessfully', 'Part Info Updated');
+          this.dialogRef.close(this.data);
+        },
+        (error) => {
+          this.toastr.error('Record Not Updated', 'Error in connecting database');
+        }
+      );
+    }
   }
 }

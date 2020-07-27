@@ -33,7 +33,10 @@ export class AddPartsComponent implements OnInit {
           exists = true;
         }
       });
-
+      if (form.value.qoh < 0) {
+        this.toastr.error('Quantity cannot be negative');
+        exists = true;
+      }
       if (!exists) {
         this.service.postParts(form.value).subscribe(
           (res) => {
